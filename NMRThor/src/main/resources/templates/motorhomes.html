@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nordic Motorhome Rentals Administration Homepage</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div class="container">
+    <h1>Motorhomes in fleet</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Model name</th>
+            <th>Beds</th>
+            <th>Price</th>
+            <th>License Plate</th>
+            <th>Active</th>
+            <th colspan="2"><a th:href="@{/addMotorhome}"><button id="addMotoHead" >Add motorhome</button></a></th>
+        </tr>
+        <tr th:each="motorhome : ${motorhomes}">
+            <td th:text="${motorhome.getID()}"></td>
+            <td th:text="${motorhome.getModel()}"></td>
+            <td th:text="${motorhome.getBeds()}"></td>
+            <td th:text="${motorhome.getPricePerDay()}"></td>
+            <td th:text="${motorhome.getLicensePlate()}"></td>
+            <td th:text="${motorhome.getActive()}"></td>
+            <td><a th:href="@{/motorhomeDetails(ID=${motorhome.getID()})}"><button>Details</button></a></td>
+            <td><a th:href="@{/deleteMotorhome(ID=${motorhome.getID()})}"><button>Delete</button></a>
+        </tr>
+
+
+
+    </table>
+</div>
+</body>
+</html>

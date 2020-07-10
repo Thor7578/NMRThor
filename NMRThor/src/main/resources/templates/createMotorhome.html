@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Add Motorhome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div id="formCreate">
+    <h1>Add Motorhome</h1>
+    <form action="#" th:action="@{/addMotorhomeForm}" th:object="${motorhome}" method="post">
+        <p>Model: <input type="text" th:field="*{model}" /></p>
+        <p>Beds: <input type="text" th:field="*{beds}" /></p>
+        <p>License plate: <input type="text" th:field="*{licensePlate}" /></p>
+        <p>Price per day: <input type="text" th:field="*{pricePerDay}" /></p>
+        <p><input id="CreateButton" type="submit" value="Create" /></p>
+    </form>
+</div>
+</body>
+</html>

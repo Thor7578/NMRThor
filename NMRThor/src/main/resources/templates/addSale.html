@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Add Motorhome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div id="formCreate">
+    <h1>Add Order</h1>
+    <form action="#" th:action="@{/addSaleForm}" th:object="${order}" method="post">
+        <p>Customer Name: <input type="text" th:field="*{customer.name}" /></p>
+        <p>Customer CPR: <input type="text" th:field="*{customer.CPR}" /></p>
+        <p>DriversLicense ID: <input type="number" th:field="*{customer.driverLicensID}" /></p>
+        <p>Credit card number: <input type="number" th:field="*{customer.creditCardNo}" /></p>
+
+        <p>Season <input type="number" th:field="*{season.seasonID}" /></p>
+
+        <p>TotalDays <input type="number" th:field="*{totalDays}" /></p>
+
+        <p><input id="CreateButton" type="submit" value="Create" /></p>
+    </form>
+</div>
+</body>
+</html>

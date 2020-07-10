@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR - Sales</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div class="container">
+    <h1>Active orders</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Drop-off location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total price</th>
+            <th colspan="2"><a th:href="@{/addSale}"><button id="addMotoHead" >Add sale</button></a></th>
+        </tr>
+        <tr th:each="order : ${activeOrders}">
+            <td th:text="${order.getOrderID()}"></td>
+            <td th:text="${order.getCustomer()}"></td>
+            <td th:text="${order.getDropOffLocation()}"></td>
+            <td th:text="${order.getStartDate()}"></td>
+            <td th:text="${order.getEndDate()}"></td>
+            <td th:text="${order.getTotalPrice()}"></td>
+            <td><a th:href="@{/orderDetails(ID=${order.getOrderID()})}"><button>Details</button></a></td>
+            <td><a th:href="@{/deleteOrder(ID=${order.getOrderID()})}"><button>Delete</button></a>
+        </tr>
+    </table>
+
+    <h1>Ended orders</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Drop-off location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total price</th>
+            <th colspan="2"><a th:href="@{/addSale}"><button id="addMotoHead" >Add sale</button></a></th>
+        </tr>
+        <tr th:each="order : ${endedOrders}">
+            <td th:text="${order.getOrderID()}"></td>
+            <td th:text="${order.getCustomer()}"></td>
+            <td th:text="${order.getDropOffLocation()}"></td>
+            <td th:text="${order.getStartDate()}"></td>
+            <td th:text="${order.getEndDate()}"></td>
+            <td th:text="${order.getTotalPrice()}"></td>
+            <td><a th:href="@{/orderDetails(ID=${order.getOrderID()})}"><button>Details</button></a></td>
+            <td><a th:href="@{/deleteOrder(ID=${order.getOrderID()})}"><button>Delete</button></a>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>

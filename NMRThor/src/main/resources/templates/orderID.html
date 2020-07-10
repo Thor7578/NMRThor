@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nordic Motorhome Rentals Administration Homepage</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div class="container">
+    <div id="formCreate">
+        <h1>Update order</h1>
+        <form action="#" th:action="@{/orderUpdate}" th:object="${order}" method="post">
+            <p>Customer: <input type="text" th:text="*{customer}" th:field="*{customer}" /></p>
+            <p>Season: <input type="number" th:text="${season}" th:field="${season}" /></p>
+
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Daily price</th>
+                </tr>
+                <tr th:each="motorhome : ${mhInOrder}">
+                    <td th:text="${motorhome.getID()}"></td>
+                    <td th:text="${motorhome.getModel()}"></td>
+                    <td th:text="${motorhome.getPricePerDay()}"></td>
+                </tr>
+            </table>
+
+            <table>
+                <tr>
+                    <th>Type</th>
+                    <th>Price</th>
+                </tr>
+                <tr th:each="extra : ${exInOrder}">
+                    <td th:text="${extra.getExtraName()}"></td>
+                    <td th:text="${extra.getExtraPrice()}"></td>
+                </tr>
+            </table>
+
+
+
+
+
+
+
+
+            <p><input id="CreateButton" type="submit" value="Save" /></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Add Motorhome</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div id="formCreate">
+    <form action="#" th:action="@{/dropOffForm}" th:object="${order}" method="post">
+        <p>City name: <input type="text" th:text="*{dropOffLocation.cityName}" th:field="*{dropOffLocation.cityName}" /></p>
+        <p>City name: <input type="text" th:text="*{dropOffLocation.streetName}" th:field="*{dropOffLocation.streetName}" /></p>
+        <p>City name: <input type="text" th:text="*{dropOffLocation.streetNo}" th:field="*{dropOffLocation.streetNo}" /></p>
+        <p>City name: <input type="number" th:text="*{dropOffLocation.ZIPCode}" th:field="*{dropOffLocation.ZIPCode}" /></p>
+        <p>City name: <input type="number" th:number="*{dropOffPrice}" th:field="*{dropOffPrice}" /></p>
+        <input type="hidden" th:field="*{orderID}" />
+
+        <p><input id="CreateButton" type="submit" value="Save" /></p>
+    </form>
+</div>
+</body>
+</html>

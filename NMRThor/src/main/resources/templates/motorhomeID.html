@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nordic Motorhome Rentals Administration Homepage</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div class="container">
+    <div id="formCreate">
+        <h1>Update motorhome</h1>
+        <form action="#" th:action="@{/motorhomeUpdate}" th:object="${motorhome}" method="post">
+            <p>Model: <input type="text" th:text="*{model}" th:field="*{model}" /></p>
+            <p>Beds: <input type="text" th:text="*{beds}" th:field="*{beds}" /></p>
+            <p>License plate: <input type="text" th:text="*{licensePlate}" th:field="*{licensePlate}" /></p>
+            <p>Price per day: <input type="text" th:text="*{pricePerDay}" th:field="*{pricePerDay}" /></p>
+            <p>Cleaned: <input type="checkbox" th:field="*{cleaned}" /></p>
+            <p>Repaired: <input type="checkbox" th:field="*{repaired}" /></p>
+            <p>Active: <input type="checkbox" th:field="*{active}" /></p>
+            <input type="hidden" th:field="*{ID}" />
+
+            <p><input id="CreateButton" type="submit" value="Save" /></p>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>NMR - Sales</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+
+</head>
+<body>
+<div class="homepage">
+    <div id="NMRElement"><a href="/">Nordic Motorhome Rentals</a>
+    </div>
+    <div id="motorhomesElement"><a href="/motorhomes">Motorhomes</a>
+    </div>
+    <div id="maintenanceElement"><a href="/maintenance">Maintenance</a>
+    </div>
+    <div id="salesElement"><a href="/sales">Sales</a>
+    </div>
+    <div id="dropOffElement"><a href="/dropOff">Drop Off</a>
+    </div>
+
+</div>
+
+<div class="container">
+    <h1>Hvilken ordre vil du registrere drop-off på?:</h1>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Customer</th>
+            <th>Drop-off location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Total price</th>
+        </tr>
+        <tr th:each="order : ${activeOrders}">
+            <td th:text="${order.customer}"></td>
+            <td th:text="${order.getCustomer()}"></td>
+            <td th:text="${order.getDropOffLocation()}"></td>
+            <td th:text="${order.getStartDate()}"></td>
+            <td th:text="${order.getEndDate()}"></td>
+            <td th:text="${order.getTotalPrice()}"></td>
+            <td><a th:href="@{/dropOffDetails(ID=${order.getOrderID()})}"><button>Register drop off</button></a></td>
+        </tr>
+    </table>
+</div>
+
+
+</body>
+</html>
